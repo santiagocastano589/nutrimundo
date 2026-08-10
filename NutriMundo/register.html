@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Usuario | Gastronomía & Catering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/registerForm.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <div class="logo-badge">
+          <i class="fa-solid fa-leaf"></i>
+          <span>C</span>
+        </div>
+        <span class="logo-text">Gastronomía</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#" class="active">Contact</a></li>
+        <li><a href="#" class="login-btn">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Decorative Leaf Background Drawings -->
+  <div class="leaf-decor leaf-left">
+    <svg width="120" height="120" viewBox="0 0 100 100" fill="none" stroke="#5c7d29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10,90 Q40,40 90,10 Q60,60 10,90 Z" />
+      <path d="M10,90 Q50,50 90,10" />
+    </svg>
+  </div>
+
+  <div class="leaf-decor leaf-right">
+    <svg width="140" height="140" viewBox="0 0 100 100" fill="none" stroke="#5c7d29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M90,90 Q60,30 10,10 Q40,50 90,90 Z" />
+      <path d="M90,90 Q50,45 10,10" />
+    </svg>
+  </div>
+
+  <!-- Main Content Card -->
+  <main class="main-wrapper">
+    <div class="contact-card">
+      <h1 class="main-title">REGÍSTRATE</h1>
+
+      <div class="card-body">
+        
+        <!-- Left Side Info Box ("HABLEMOS") -->
+        <aside class="info-sidebar">
+          <h2 class="sidebar-title">HABLEMOS</h2>
+          
+          <div class="map-graphic">
+            <div class="map-bg">
+              <i class="fa-solid fa-location-dot map-pin"></i>
+            </div>
+          </div>
+
+          <div class="info-details">
+            <div class="info-item">
+              <span class="info-label">VISÍTANOS:</span>
+              <span class="info-val">Calle Principal 123, Ciudad, País</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">LLÁMANOS:</span>
+              <span class="info-val">+1 (555) 123-4567</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">ESCRÍBENOS:</span>
+              <span class="info-val">hola@ejemplo.com</span>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">SÍGUENOS:</span>
+              <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Right Side Form -->
+        <section class="form-section">
+          <h2 class="section-title">CREA TU CUENTA DE USUARIO</h2>
+          <p class="section-subtitle">Déjanos tus datos y nos pondremos en contacto contigo lo antes posible.</p>
+
+          <form id="registerForm" novalidate>
+            <div class="form-grid">
+              
+              <!-- Tipo de Documento -->
+              <div class="form-group">
+                <label for="tipo_documento">TIPO DE DOCUMENTO</label>
+                <div class="select-wrapper">
+                  <select id="tipo_documento" name="tipo_documento" required>
+                    <option value="" disabled selected>Selecciona tipo...</option>
+                    <option value="CC">CC - Cédula de Ciudadanía</option>
+                    <option value="TI">TI - Tarjeta de Identificación</option>
+                    <option value="CE">CE - Cédula de Extranjería</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                  </select>
+                  <i class="fa-solid fa-caret-down"></i>
+                </div>
+                <span class="error-text">Selecciona un tipo de documento</span>
+              </div>
+
+              <!-- Documento -->
+              <div class="form-group">
+                <label for="documento">DOCUMENTO</label>
+                <input type="text" id="documento" name="documento" placeholder="Ej: 1234567890" required pattern="[a-zA-Z0-9]{5,20}">
+                <span class="error-text">Número de documento inválido</span>
+              </div>
+
+              <!-- Nombre Completo -->
+              <div class="form-group full-width">
+                <label for="nombre_apellidos">NOMBRE COMPLETO</label>
+                <input type="text" id="nombre_apellidos" name="nombre_apellidos" placeholder="Ej: Juan Pérez" required>
+                <span class="error-text">El nombre completo es obligatorio</span>
+              </div>
+
+              <!-- Teléfono -->
+                <div class="form-group">
+                <label for="telefono">TELÉFONO</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="Ej: 3001234567" required pattern="[0-9]{7,15}" inputmode="numeric">
+                <span class="error-text">Solo se permiten números (mín. 7 dígitos)</span>
+                </div>
+
+              <!-- Correo Electrónico -->
+              <div class="form-group">
+                <label for="email">CORREO ELECTRÓNICO</label>
+                <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+                <span class="error-text">Correo electrónico no válido</span>
+              </div>
+
+              <!-- Dirección -->
+              <div class="form-group full-width">
+                <label for="direccion">DIRECCIÓN</label>
+                <input type="text" id="direccion" name="direccion" placeholder="Ej: Av. Principal 123, Apto 4B" required>
+                <span class="error-text">La dirección es requerida</span>
+              </div>
+
+              <!-- Preferencia -->
+              <div class="form-group full-width">
+                <label for="preferencia">PREFERENCIA GASTRONÓMICA</label>
+                <div class="select-wrapper">
+                  <select id="preferencia" name="preferencia" required>
+                    <option value="" disabled selected>Selecciona una opción...</option>
+                    <option value="Platos Típicos & Tradicionales">Platos Típicos & Tradicionales</option>
+                    <option value="Comida Vegetariana / Vegana">Comida Vegetariana / Vegana</option>
+                    <option value="Repostería & Postres">Repostería & Postres</option>
+                    <option value="Comida Internacional & Gourmet">Comida Internacional & Gourmet</option>
+                  </select>
+                  <i class="fa-solid fa-caret-down"></i>
+                </div>
+                <span class="error-text">Selecciona tu preferencia</span>
+              </div>
+
+              <!-- Contraseña -->
+              <div class="form-group full-width">
+                <label for="contrasena">CONTRASEÑA</label>
+                <div class="password-wrapper">
+                  <input type="password" id="contrasena" name="contrasena" placeholder="Crea una contraseña segura" required minlength="8">
+                  <button type="button" class="btn-toggle-pwd" id="togglePassword">
+                    <i class="fa-solid fa-eye" id="eyeIcon"></i>
+                  </button>
+                </div>
+                <span class="error-text">La contraseña debe tener mínimo 8 caracteres</span>
+              </div>
+
+            </div>
+
+            <!-- Submit Button & Privacy Policy -->
+            <div class="form-footer">
+              <button type="submit" class="btn-submit">COMPLETAR REGISTRO</button>
+              
+              <label class="terms-label">
+                <input type="checkbox" id="terms" required>
+                <span>Acepto la <strong>política de privacidad</strong>.</span>
+              </label>
+              <span class="terms-error" id="termsError">Debes aceptar la política de privacidad</span>
+            </div>
+
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal de confirmación -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal-card">
+      <div class="modal-icon"><i class="fa-solid fa-circle-check"></i></div>
+      <h2>¡Registro Exitoso!</h2>
+      <p>Tus datos han sido registrados correctamente.</p>
+      <div class="modal-summary" id="modalSummary"></div>
+      <button type="button" class="btn-modal-close" id="closeModal">Aceptar</button>
+    </div>
+  </div>
+
+  <script src="js/register.js"></script>
+</body>
+</html>
