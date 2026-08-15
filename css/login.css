@@ -1,0 +1,809 @@
+/* =====================================================
+   VARIABLES DEL SISTEMA DE DISEÑO (UNIFICADAS)
+===================================================== */
+:root {
+  /* Paleta Gastronómica Fresca */
+  --primary-olive: #476a21;
+  --primary-olive-hover: #375319;
+  --primary-olive-light: #eff6e7;
+  --primary-accent: #2e7d32;
+
+  --bg-page: #f7f9f3;
+  --bg-card: #ffffff;
+  --bg-sidebar: #f0f5e8;
+  --bg-input: #ffffff;
+  --bg-input-focus: #fcfdfa;
+
+  /* Texto & Jerarquía */
+  --text-dark: #1b2611;
+  --text-body: #3c4c28;
+  --text-muted: #6b7c58;
+  --text-label: #273815;
+
+  /* Bordes & Estados */
+  --border-light: #d8e4c8;
+  --border-focus: #5f8d2b;
+  --error-color: #d32f2f;
+  --error-bg: #fff5f5;
+  --success-color: #2e7d32;
+  --success-bg: #edf7ed;
+
+  /* Radios & Sombras */
+  --radius-card: 20px;
+  --radius-inner: 14px;
+  --radius-input: 10px;
+  --radius-pill: 50px;
+
+  --shadow-sm: 0 2px 8px rgba(39, 55, 20, 0.04);
+  --shadow-md: 0 10px 30px rgba(39, 55, 20, 0.08);
+  --shadow-lg: 0 20px 45px rgba(27, 38, 17, 0.12);
+  --shadow-focus: 0 0 0 4px rgba(95, 141, 43, 0.15);
+
+  --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =====================================================
+   RESET Y BASE
+===================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-page);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(93, 128, 36, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(71, 106, 33, 0.05) 0%, transparent 40%),
+    linear-gradient(rgba(247, 249, 243, 0.94), rgba(247, 249, 243, 0.94)),
+    url("https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1920&q=80");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--text-body);
+}
+
+/* =====================================================
+   NAVBAR (IDÉNTICA A REGISTRO)
+===================================================== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.navbar {
+  padding: 0.85rem 2rem;
+}
+
+.nav-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.logo-badge {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--primary-olive);
+  color: #ffffff;
+  border-radius: 12px;
+  font-size: 1.15rem;
+  box-shadow: 0 4px 12px rgba(71, 106, 33, 0.25);
+  transition: var(--transition);
+}
+
+.logo:hover .logo-badge {
+  transform: rotate(-8deg) scale(1.05);
+}
+
+.logo-text-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-brand {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: var(--text-dark);
+  line-height: 1.1;
+}
+
+.logo-tagline {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--primary-olive);
+  background: var(--primary-olive-light);
+}
+
+.nav-link.active {
+  color: var(--primary-olive);
+  background: var(--primary-olive-light);
+  font-weight: 700;
+}
+
+/* =====================================================
+   MAIN CARD & WRAPPER
+===================================================== */
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem 1.25rem;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 950px;
+  background: var(--bg-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header de la Tarjeta */
+.card-header {
+  text-align: center;
+  padding: 2.25rem 2rem 1.5rem 2rem;
+  border-bottom: 1px solid var(--border-light);
+  background: linear-gradient(180deg, #ffffff 0%, #fafcf7 100%);
+}
+
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  background: var(--primary-olive-light);
+  color: var(--primary-olive);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 0.6rem;
+}
+
+.main-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -0.5px;
+}
+
+.main-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* =====================================================
+   LAYOUT INTERNO (SIDEBAR + FORM)
+===================================================== */
+.card-body {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2.25rem;
+  padding: 2.25rem;
+}
+
+/* =====================================================
+   SIDEBAR (BENEFICIOS & SOPORTE)
+===================================================== */
+.info-sidebar {
+  background: var(--bg-sidebar);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-inner);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sidebar-header {
+  text-align: center;
+}
+
+.sidebar-icon-circle {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  color: var(--primary-olive);
+  border-radius: 50%;
+  font-size: 1.35rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.sidebar-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.sidebar-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+  line-height: 1.4;
+}
+
+/* Items de Beneficios */
+.sidebar-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.benefit-icon {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  background: #ffffff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-olive);
+  font-size: 0.88rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.benefit-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.benefit-text strong {
+  font-size: 0.84rem;
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+.benefit-text span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+/* Ayuda / Soporte */
+.sidebar-help {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-light);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.help-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-label);
+}
+
+.help-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--primary-olive);
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.help-link:hover {
+  color: var(--primary-olive-hover);
+  text-decoration: underline;
+}
+
+/* =====================================================
+   SECCIÓN DEL FORMULARIO
+===================================================== */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-header-box {
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -0.3px;
+}
+
+.section-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--text-label);
+  letter-spacing: 0.3px;
+  margin-bottom: 0.4rem;
+}
+
+.required {
+  color: var(--error-color);
+}
+
+/* Inputs & Contenedores con Iconos */
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.field-icon {
+  position: absolute;
+  left: 1rem;
+  color: #9cb088;
+  font-size: 0.9rem;
+  pointer-events: none;
+  transition: var(--transition);
+}
+
+.input-container input {
+  width: 100%;
+  padding: 0.78rem 1rem 0.78rem 2.6rem;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  background: var(--bg-input);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-input);
+  outline: none;
+  transition: var(--transition);
+}
+
+.input-container input::placeholder {
+  color: #a4b395;
+  font-size: 0.85rem;
+}
+
+.input-container input:focus {
+  background: var(--bg-input-focus);
+  border-color: var(--border-focus);
+  box-shadow: var(--shadow-focus);
+}
+
+.input-container input:focus ~ .field-icon {
+  color: var(--primary-olive);
+}
+
+/* Password Toggle */
+.password-container input {
+  padding-right: 2.75rem;
+}
+
+.btn-toggle-pwd {
+  position: absolute;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  padding: 0.35rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+
+.btn-toggle-pwd:hover {
+  color: var(--primary-olive);
+  background: var(--primary-olive-light);
+}
+
+/* =====================================================
+   OPCIONES (RECORDARME Y RECUPERAR)
+===================================================== */
+.form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -0.25rem;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.custom-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.custom-checkbox-label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  background-color: #ffffff;
+  border: 1.5px solid var(--border-light);
+  border-radius: 5px;
+  transition: var(--transition);
+  position: relative;
+}
+
+.custom-checkbox-label:hover input ~ .checkmark {
+  border-color: var(--primary-olive);
+}
+
+.custom-checkbox-label input:checked ~ .checkmark {
+  background-color: var(--primary-olive);
+  border-color: var(--primary-olive);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.custom-checkbox-label input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.terms-text {
+  font-size: 0.82rem;
+  color: var(--text-body);
+}
+
+.forgot-link {
+  color: var(--primary-olive);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.forgot-link:hover {
+  color: var(--primary-olive-hover);
+  text-decoration: underline;
+}
+
+/* =====================================================
+   BOTÓN SUBMIT Y REGISTRO CTA
+===================================================== */
+.form-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.btn-submit {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.88rem 1.5rem;
+  background: var(--primary-olive);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(71, 106, 33, 0.28);
+  transition: var(--transition);
+}
+
+.btn-submit:hover {
+  background: var(--primary-olive-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(71, 106, 33, 0.35);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+}
+
+/* Enlace a Registro */
+.register-cta {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed var(--border-light);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.register-link {
+  color: var(--primary-olive);
+  font-weight: 800;
+  text-decoration: none;
+  margin-left: 0.3rem;
+  transition: var(--transition);
+}
+
+.register-link:hover {
+  text-decoration: underline;
+  color: var(--primary-olive-hover);
+}
+
+/* =====================================================
+   ESTADOS DE VALIDACIÓN & MENSAJES
+===================================================== */
+.error-text {
+  display: none;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.35rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--error-color);
+}
+
+.form-group.has-error .error-text {
+  display: flex;
+}
+
+.form-group.has-error input {
+  border-color: var(--error-color);
+  background-color: var(--error-bg);
+}
+
+.form-group.has-error .field-icon {
+  color: var(--error-color);
+}
+
+.mensaje {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  min-height: 20px;
+  display: none;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.mensaje.show {
+  display: block;
+}
+
+.mensaje.error {
+  color: var(--error-color);
+  background: var(--error-bg);
+  border: 1px solid rgba(211, 47, 47, 0.2);
+}
+
+.mensaje.exito {
+  color: var(--success-color);
+  background: var(--success-bg);
+  border: 1px solid rgba(46, 125, 50, 0.2);
+}
+
+/* =====================================================
+   MODAL RECUPERAR CONTRASEÑA
+===================================================== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(27, 38, 17, 0.6);
+  backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1.25rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.show {
+  display: flex !important;
+  opacity: 1;
+}
+
+.modal-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: var(--radius-card);
+  padding: 2.5rem 2rem 2rem 2rem;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  transform: scale(0.92);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-overlay.show .modal-card {
+  transform: scale(1);
+}
+
+.btn-close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.btn-close-modal:hover {
+  background: var(--primary-olive-light);
+  color: var(--primary-olive);
+}
+
+.modal-icon-badge {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1rem;
+  background: var(--primary-olive-light);
+  color: var(--primary-olive);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+}
+
+.modal-card h2 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.modal-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+  line-height: 1.4;
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN
+===================================================== */
+@media (max-width: 860px) {
+  .card-body {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    padding: 1.75rem;
+  }
+
+  .info-sidebar {
+    order: 2;
+  }
+
+  .form-section {
+    order: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+
+  .nav-menu {
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.5rem;
+  }
+
+  .main-wrapper {
+    padding: 1.25rem 0.85rem;
+  }
+
+  .card-header {
+    padding: 1.5rem 1rem;
+  }
+
+  .main-title {
+    font-size: 1.5rem;
+  }
+
+  .card-body {
+    padding: 1.25rem;
+  }
+
+  .form-options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+}

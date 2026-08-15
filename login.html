@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión | Nutrimundo Gastronomía & Catering</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./css/login.css">
+  <script src="./js/auth-guard.js" data-auth="guest"></script>
+
+</head>
+
+<body>
+
+  <!-- Top Navigation Bar (Idéntica a Registro) -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="http://localhost/nutrimundo/" class="logo">
+          <div class="logo-badge">
+            <i class="fa-solid fa-leaf"></i>
+          </div>
+          <div class="logo-text-group">
+            <span class="logo-brand">NUTRIMUNDO</span>
+            <span class="logo-tagline">Gastronomía & Nutrición</span>
+          </div>
+        </a>
+        <ul class="nav-menu">
+          <li><a href="http://localhost/nutrimundo/" class="nav-link">Inicio</a></li>
+          <li><a href="register.html" class="nav-link active">Registrarse</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Contenedor Principal -->
+  <main class="main-wrapper">
+    <div class="login-card">
+
+      <!-- Encabezado de la Tarjeta -->
+      <div class="card-header">
+        <span class="header-badge"><i class="fa-solid fa-user-check"></i> Área de Clientes</span>
+        <h1 class="main-title">Bienvenido a NUTRIMUNDO</h1>
+        <p class="main-subtitle">Accede a tu cuenta para gestionar tus pedidos y menús personalizados.</p>
+      </div>
+
+      <div class="card-body">
+
+        <!-- Panel Lateral Informativo / Beneficios -->
+        <aside class="info-sidebar">
+          <div class="sidebar-header">
+            <div class="sidebar-icon-circle">
+              <i class="fa-solid fa-utensils"></i>
+            </div>
+            <h2 class="sidebar-title">Tu Experiencia Culinaria</h2>
+            <p class="sidebar-desc">Todo lo que necesitas para tu nutrición y catering en un solo lugar.</p>
+          </div>
+
+          <!-- Lista de Beneficios -->
+          <div class="sidebar-benefits">
+            <div class="benefit-item">
+              <div class="benefit-icon"><i class="fa-solid fa-calendar-check"></i></div>
+              <div class="benefit-text">
+                <strong>Planifica tus Menús</strong>
+                <span>Elige tus comidas semanales fácilmente.</span>
+              </div>
+            </div>
+
+            <div class="benefit-item">
+              <div class="benefit-icon"><i class="fa-solid fa-truck-fast"></i></div>
+              <div class="benefit-text">
+                <strong>Rastreo en Tiempo Real</strong>
+                <span>Sigue el estado de tus entregas en directo.</span>
+              </div>
+            </div>
+
+            <div class="benefit-item">
+              <div class="benefit-icon"><i class="fa-solid fa-gem"></i></div>
+              <div class="benefit-text">
+                <strong>Beneficios Exclusivos</strong>
+                <span>Descuentos en catering y eventos especiales.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ayuda de Contacto -->
+          <div class="sidebar-help">
+            <span class="help-title">¿Tienes problemas para acceder?</span>
+            <a href="mailto:soporte@nutrimundo.com" class="help-link">
+              <i class="fa-solid fa-envelope"></i> Contactar con Soporte
+            </a>
+          </div>
+        </aside>
+
+        <!-- Formulario de Acceso -->
+        <section class="form-section">
+          <div class="form-header-box">
+            <h2 class="section-title">Ingresa a tu Cuenta</h2>
+            <p class="section-subtitle">Escribe tus credenciales para continuar.</p>
+          </div>
+
+          <form id="formAcceder" novalidate>
+
+            <!-- Campo Correo -->
+            <div class="form-group">
+              <label for="correo">CORREO ELECTRÓNICO <span class="required">*</span></label>
+              <div class="input-container">
+                <i class="fa-solid fa-envelope field-icon"></i>
+                <input
+                  type="email"
+                  id="correo"
+                  name="correo"
+                  placeholder="ejemplo@correo.com"
+                  required
+                >
+              </div>
+              <span class="error-text"><i class="fa-solid fa-circle-exclamation"></i> Ingresa un correo electrónico válido</span>
+            </div>
+
+            <!-- Campo Contraseña -->
+            <div class="form-group">
+              <label for="contrasena">CONTRASEÑA <span class="required">*</span></label>
+              <div class="input-container password-container">
+                <i class="fa-solid fa-lock field-icon"></i>
+                <input
+                  type="password"
+                  id="contrasena"
+                  name="contrasena"
+                  placeholder="Ingresa tu contraseña"
+                  required
+                >
+                <button type="button" class="btn-toggle-pwd" id="togglePassword" title="Mostrar/Ocultar contraseña" aria-label="Mostrar/Ocultar contraseña">
+                  <i class="fa-solid fa-eye" id="eyeIcon"></i>
+                </button>
+              </div>
+              <span class="error-text"><i class="fa-solid fa-circle-exclamation"></i> La contraseña es requerida</span>
+            </div>
+
+            <!-- Opciones (Recordarme y Olvidé mi contraseña) -->
+            <div class="form-options">
+              <label class="custom-checkbox-label">
+                <input type="checkbox" id="recordar" name="recordar">
+                <span class="checkmark"></span>
+                <span class="terms-text">Recordar mi sesión</span>
+              </label>
+
+              <a href="#" id="olvidaste" class="forgot-link">¿Olvidaste tu contraseña?</a>
+            </div>
+
+            <!-- Botón de Inicio de Sesión -->
+            <div class="form-footer">
+              <button type="submit" class="btn-submit" id="btnAcceder">
+                <span>Iniciar Sesión</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+
+              <!-- Mensaje de Estado (Éxito / Error) -->
+              <p id="mensaje" class="mensaje"></p>
+            </div>
+
+            <!-- Enlace a Registro -->
+            <div class="register-cta">
+              <span>¿Aún no tienes una cuenta?</span>
+              <a href="register.html" class="register-link">Regístrate aquí</a>
+            </div>
+
+          </form>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- =====================================================
+       MODAL RECUPERAR CONTRASEÑA (Estilo Unificado)
+  ====================================================== -->
+  <div class="modal-overlay" id="modalRecuperar">
+    <div class="modal-card">
+      <button type="button" class="btn-close-modal" id="cerrarModal" aria-label="Cerrar modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="modal-icon-badge">
+        <i class="fa-solid fa-key"></i>
+      </div>
+
+      <h2>Recuperar Contraseña</h2>
+      <p class="modal-desc">Ingresa el correo electrónico asociado a tu cuenta y te enviaremos las instrucciones de recuperación.</p>
+
+      <form id="formRecuperar" novalidate>
+        <div class="form-group" style="text-align: left; margin-top: 1.25rem;">
+          <label for="correoRecuperacion">CORREO ELECTRÓNICO REGISTRADO <span class="required">*</span></label>
+          <div class="input-container">
+            <i class="fa-solid fa-envelope field-icon"></i>
+            <input
+              type="email"
+              id="correoRecuperacion"
+              placeholder="tu-correo@ejemplo.com"
+              required
+            >
+          </div>
+          <span class="error-text" id="errorRecuperacion"><i class="fa-solid fa-circle-exclamation"></i> Ingresa un correo válido</span>
+        </div>
+
+        <button type="submit" class="btn-submit" id="btnRecuperar" style="margin-top: 1.25rem;">
+          <span>Enviar Solicitud</span>
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </form>
+
+      <p id="mensajeRecuperacion" class="mensaje"></p>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script src="./js/login.js"></script>
+
+</body>
+</html>

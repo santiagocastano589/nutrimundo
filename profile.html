@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Perfil | Nutrimundo Gastronomía & Catering</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./css/profile.css">
+  <script src="./js/auth-guard.js" data-auth="usuario"></script>
+
+</head>
+
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="nav-container">
+        
+        <!-- Logo -->
+        <a href="http://localhost/nutrimundo/" class="logo">
+          <div class="logo-badge">
+            <i class="fa-solid fa-leaf"></i>
+          </div>
+          <div class="logo-text-group">
+            <span class="logo-brand">NUTRIMUNDO</span>
+            <span class="logo-tagline">Gastronomía & Nutrición</span>
+          </div>
+        </a>
+
+        <!-- Menu & Logout -->
+        <div class="nav-right">
+          <ul class="nav-menu">
+            <li><a href="http://localhost/nutrimundo/" class="nav-link">Inicio</a></li>
+            <li><a href="perfil.html" class="nav-link active">Mi Perfil</a></li>
+          </ul>
+
+          <button type="button" class="btn-logout" id="btnLogout" title="Cerrar sesión">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <span>Cerrar Sesión</span>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="main-wrapper">
+    <div class="profile-container">
+
+      <!-- Header Section -->
+      <section class="profile-header">
+        <span class="header-badge"><i class="fa-solid fa-user-pen"></i> Cuenta de Usuario</span>
+        <h1 class="main-title">Configuración de Perfil</h1>
+        <p class="main-subtitle">Mantén tus datos de contacto y preferencias gastronómicas actualizados.</p>
+      </section>
+
+      <!-- Grid: Left Card (Summary) + Right Card (Forms) -->
+      <div class="profile-grid">
+
+        <!-- ==========================================
+             COLUMNA IZQUIERDA: RESUMEN DE USUARIO
+        =========================================== -->
+        <aside class="profile-sidebar">
+          
+          <div class="user-avatar-card">
+            <div class="avatar-large" id="avatarInitial">U</div>
+            <h2 class="user-display-name" id="userDisplayName">Cargando...</h2>
+            <span class="user-display-email" id="userDisplayEmail">usuario@correo.com</span>
+            <span class="user-badge-client"><i class="fa-solid fa-circle-check"></i> Cliente Verificado</span>
+          </div>
+
+          <!-- Info Rápida -->
+          <div class="sidebar-info-box">
+            <div class="info-row">
+              <span class="info-k"><i class="fa-solid fa-id-card"></i> Documento:</span>
+              <span class="info-v" id="displayDoc">-</span>
+            </div>
+            <div class="info-row">
+              <span class="info-k"><i class="fa-solid fa-bowl-food"></i> Menú Favorito:</span>
+              <span class="info-v" id="displayPref">-</span>
+            </div>
+            <div class="info-row">
+              <span class="info-k"><i class="fa-solid fa-calendar-day"></i> Miembro desde:</span>
+              <span class="info-v" id="displayFecha">Reciente</span>
+            </div>
+          </div>
+
+          <!-- Banner de Soporte / Ayuda -->
+          <div class="support-banner">
+            <i class="fa-solid fa-headset banner-icon"></i>
+            <div>
+              <strong>¿Necesitas ayuda con un pedido?</strong>
+              <p>Nuestro equipo de catering está listo para atenderte.</p>
+            </div>
+          </div>
+
+        </aside>
+
+
+        <!-- ==========================================
+             COLUMNA DERECHA: FORMULARIOS DE EDICIÓN
+        =========================================== -->
+        <section class="profile-content">
+
+          <!-- Tabs Selector -->
+          <div class="tabs-nav">
+            <button type="button" class="tab-btn active" data-tab="tab-personal">
+              <i class="fa-solid fa-user"></i> Datos Personales
+            </button>
+            <button type="button" class="tab-btn" data-tab="tab-seguridad">
+              <i class="fa-solid fa-shield-halved"></i> Seguridad y Clave
+            </button>
+          </div>
+
+          <!-- Alerta de Notificación (Éxito / Error) -->
+          <div id="alertMessage" class="alert-box"></div>
+
+          <!-- ==========================================
+               TAB 1: DATOS PERSONALES
+          =========================================== -->
+          <div class="tab-pane active" id="tab-personal">
+            <form id="formUpdateProfile" novalidate>
+              <div class="form-grid">
+
+                <!-- Tipo de Documento (Lectura / Fijo) -->
+                <div class="form-group">
+                  <label for="tipo_documento">TIPO DE DOCUMENTO</label>
+                  <div class="input-container readonly-container">
+                    <i class="fa-solid fa-id-card field-icon"></i>
+                    <input type="text" id="tipo_documento" name="tipo_documento" readonly>
+                  </div>
+                </div>
+
+                <!-- Documento (Lectura / Fijo) -->
+                <div class="form-group">
+                  <label for="documento">NÚMERO DE DOCUMENTO</label>
+                  <div class="input-container readonly-container">
+                    <i class="fa-solid fa-hashtag field-icon"></i>
+                    <input type="text" id="documento" name="documento" readonly>
+                  </div>
+                </div>
+
+                <!-- Nombre Completo -->
+                <div class="form-group full-width">
+                  <label for="nombre_apellidos">NOMBRE COMPLETO <span class="required">*</span></label>
+                  <div class="input-container">
+                    <i class="fa-solid fa-user field-icon"></i>
+                    <input type="text" id="nombre_apellidos" name="nombre_apellidos" required minlength="3">
+                  </div>
+                  <span class="error-text"><i class="fa-solid fa-circle-exclamation"></i> Ingresa tu nombre completo</span>
+                </div>
+
+                <!-- Correo Electrónico -->
+                <div class="form-group">
+                  <label for="correo">CORREO ELECTRÓNICO <span class="required">*</span></label>
+                  <div class="input-container">
+                    <i class="fa-solid fa-envelope field-icon"></i>
+                    <input type="email" id="correo" name="correo" required>
+                  </div>
+                  <span class="error-text"><i class="fa-solid fa-circle-exclamation"></i> Ingresa un correo válido</span>
+                </div>
+
+                <!-- Teléfono -->
+                <div class="form-group">
+                  <label for="telefono">TELÉFONO DE CONTACTO <span class="required">*</span></label>
+                  <div class="input-container">
+                    <i class="fa-solid fa-phone field-icon"></i>
+                    <input type="tel" id="telefono" name="telefono" required pattern="[0-9]{7,15}" inputmode="numeric">
+                  </div>
+                  <span class="error-text"><i class="fa-solid fa-circle-exclamation"></i> Mínimo 7 dígitos numéricos</span>
+                </div>
+
+                <!-- Dirección de Entrega -->
+                <div class="form-group full-width">
+                  <label for="direccion">DIRECCIÓN DE ENTREGA / RESIDENCIA <span class="required">*</span></label>
+                  <div class="input-container">
+                    <i class="fa-solid fa-map-location-dot field-icon"></i>
+                    <input type="text" id="direccion" name="direccion" required>
+                  </div>
+                  <span class="error-text"><i class="fa-solid fa-circle-exclamation"></i> La dirección es obligatoria</span>
+                </div>
+
+                <!-- Preferencia Gastronómica -->
+                <div class="form-group full-width">
+                  <label for="preferencia">PREFERENCIA GASTRONÓMICA <span class="required">*</span></label>
+                  <div class="input-container select-container">
+                    <i class="fa-solid fa-utensils field-icon"></i>
+                    <select id="preferencia" name="preferencia" required>
+                      <option value="Platos Típicos & Tradicionales">Platos Típicos & Tradicionales</option>
+                      <option value="Comida Vegetariana / Vegana">Comida Vegetariana / Vegana</option>
+                      <option value="Repostería & Postres Artesanales">Repostería & Postres Artesanales</option>
+                      <option value="Comida Internacional & Gourmet">Comida Internacional & Gourmet</option>
+                      <option value="Menú Fitness & Balanceado">Menú Fitness & Balanceado</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                  </div>
+                  <span class="error-text"><i class="fa-solid fa-circle-exclamation"></i> Selecciona una opción</span>
+                </div>
+
+              </div>
+
+              <!-- Submit -->
+              <div class="form-actions">
+                <button type="submit" class="btn-submit" id="btnGuardarPerfil">
+                  <i class="fa-solid fa-floppy-disk"></i>
+                  <span>Guardar Cambios</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+
+          <!-- ==========================================
+               TAB 2: CAMBIO DE CONTRASEÑA
+          =========================================== -->
+          <div class="tab-pane" id="tab-seguridad">
+            <form id="formUpdatePassword" novalidate>
+              <div class="form-group">
+                <label for="pass_actual">CONTRASEÑA ACTUAL <span class="required">*</span></label>
+                <div class="input-container">
+                  <i class="fa-solid fa-lock field-icon"></i>
+                  <input type="password" id="pass_actual" name="pass_actual" placeholder="Ingresa tu contraseña actual" required>
+                </div>
+                <span class="error-text"><i class="fa-solid fa-circle-exclamation"></i> Ingresa tu contraseña actual</span>
+              </div>
+
+              <div class="form-group">
+                <label for="pass_nueva">NUEVA CONTRASEÑA <span class="required">*</span></label>
+                <div class="input-container">
+                  <i class="fa-solid fa-key field-icon"></i>
+                  <input type="password" id="pass_nueva" name="pass_nueva" placeholder="Mínimo 8 caracteres" required minlength="8">
+                </div>
+                <span class="error-text"><i class="fa-solid fa-circle-exclamation"></i> Mínimo 8 caracteres</span>
+              </div>
+
+              <div class="form-group">
+                <label for="pass_confirmar">CONFIRMAR NUEVA CONTRASEÑA <span class="required">*</span></label>
+                <div class="input-container">
+                  <i class="fa-solid fa-check-double field-icon"></i>
+                  <input type="password" id="pass_confirmar" name="pass_confirmar" placeholder="Repite la nueva contraseña" required minlength="8">
+                </div>
+                <span class="error-text" id="errorPassConfirm"><i class="fa-solid fa-circle-exclamation"></i> Las contraseñas no coinciden</span>
+              </div>
+
+              <!-- Submit Password -->
+              <div class="form-actions">
+                <button type="submit" class="btn-submit" id="btnGuardarPassword">
+                  <i class="fa-solid fa-shield-check"></i>
+                  <span>Actualizar Contraseña</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </section>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- JAVASCRIPT -->
+  <script src="./js/profile.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contáctanos | FreshFood</title>
+    <link rel="stylesheet" href="css/contactenos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <!-- <div class="logo">🥗 NutriMundo</div> -->
+    <h1>NUTRIMUNDO</h1>
+
+    <nav>
+        <a href="http://localhost/NutriMundo">Inicio</a>
+    </nav>
+</header>
+
+<section class="contenedor">
+
+    <div class="contacto">
+
+        <!-- Columna Izquierda: Información -->
+        <div class="info">
+            <h2>HABLEMOS</h2>
+
+            <img src="img/mapa2.png" alt="Mapa">
+
+            <p><strong>📍 Dirección</strong><br>
+            Calle 123 #45-67</p>
+
+            <p><strong>📞 Teléfono</strong><br>
+            +57 3225972816</p>
+
+            <p><strong>✉ Correo</strong><br>
+            juancarloscastanonavarrete356@gmail.com</p>
+
+            <div class="redes">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <!-- Columna Derecha: Formulario -->
+        <div class="formulario">
+            <h1>CONTÁCTANOS</h1>
+            <p>Déjanos tus datos y te responderemos lo antes posible.</p>
+
+            <form id="contactForm" action="php/enviar_correo.php" method="POST">
+
+                <div class="fila">
+                    <input type="text" name="nombre" placeholder="Nombre Completo" required>
+                    <input type="email" name="email" placeholder="Correo Electrónico" required>
+                </div>
+
+                <div class="fila">
+                    <input type="tel" name="telefono" placeholder="Teléfono" required pattern="[0-9]{7,15}">
+                    <input type="text" name="asunto" placeholder="Asunto" required>
+                </div>
+
+                <textarea name="mensaje" placeholder="Escribe tu mensaje..." required></textarea>
+
+                <div class="politica-container">
+                    <label class="politica-label">
+                        <input type="checkbox" name="politica" id="politica" required>
+                        <span>Acepto la <strong>política de privacidad</strong></span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-enviar" id="btnEnviar">ENVIAR MENSAJE</button>
+
+            </form>
+        </div>
+
+    </div>
+
+</section>
+
+<script src="js/contactenos.js"></script>
+</body>
+</html>

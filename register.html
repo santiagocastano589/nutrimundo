@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Usuario | Nutrimundo Gastronomía & Catering</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/registerForm.css">
+  <script src="./js/auth-guard.js" data-auth="guest"></script>
+
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#" class="logo">
+          <div class="logo-badge">
+            <i class="fa-solid fa-leaf"></i>
+          </div>
+          <div class="logo-text-group">
+            <span class="logo-brand">NUTRIMUNDO</span>
+            <span class="logo-tagline">Gastronomía & Nutrición</span>
+          </div>
+        </a>
+        <ul class="nav-menu">
+          <li><a href="http://localhost/nutrimundo/" class="nav-link">Inicio</a></li>
+          <li><a href="login.html" class="nav-link active">Iniciar sesión</a></li>
+          <!-- <li><a href="contactenos.html" class="nav-link active">Contacto / Registro</a></li> -->
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="main-wrapper">
+    <div class="registration-card">
+      
+      <!-- Card Header -->
+      <div class="card-header">
+        <span class="header-badge"><i class="fa-solid fa-sparkles"></i> Únete a Nutrimundo</span>
+        <h1 class="main-title">Crea tu Cuenta</h1>
+        <p class="main-subtitle">Disfruta de una experiencia gastronómica personalizada y saludable.</p>
+      </div>
+
+      <div class="card-body">
+        
+        <!-- Left Side Info Box ("HABLEMOS") -->
+        <aside class="info-sidebar">
+          <div class="sidebar-header">
+            <div class="sidebar-icon-circle">
+              <i class="fa-solid fa-headset"></i>
+            </div>
+            <h2 class="sidebar-title">¿Necesitas asesoría?</h2>
+            <p class="sidebar-desc">Estamos listos para atender tus requerimientos y planificar tu menú.</p>
+          </div>
+
+          <div class="info-details">
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="info-text">
+                <span class="info-label">VISÍTANOS</span>
+                <span class="info-val">Calle Principal 123, Ciudad</span>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div class="info-text">
+                <span class="info-label">LLÁMANOS</span>
+                <a href="tel:+15551234567" class="info-val info-link">+1 (555) 123-4567</a>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div class="info-text">
+                <span class="info-label">ESCRÍBENOS</span>
+                <a href="mailto:hola@nutrimundo.com" class="info-val info-link">hola@nutrimundo.com</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="sidebar-features">
+            <div class="feature-chip"><i class="fa-solid fa-circle-check"></i> Ingredientes 100% Frescos</div>
+            <div class="feature-chip"><i class="fa-solid fa-shield-halved"></i> Datos 100% Protegidos</div>
+          </div>
+
+          <!-- Social Links -->
+          <div class="social-section">
+            <span class="social-title">SÍGUENOS EN REDES:</span>
+            <div class="social-icons">
+              <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Right Side Form -->
+        <section class="form-section">
+          <div class="form-header-box">
+            <h2 class="section-title">Datos del Usuario</h2>
+            <p class="section-subtitle">Completa el formulario para registrarte en nuestra plataforma.</p>
+          </div>
+
+          <form id="registerForm" novalidate>
+            <div class="form-grid">
+              
+              <!-- Tipo de Documento -->
+              <div class="form-group">
+                <label for="tipo_documento">TIPO DE DOCUMENTO <span class="required">*</span></label>
+                <div class="input-container select-container">
+                  <i class="fa-solid fa-id-card field-icon"></i>
+                  <select id="tipo_documento" name="tipo_documento" required>
+                    <option value="" disabled selected>Selecciona tipo...</option>
+                    <option value="CC">CC - Cédula de Ciudadanía</option>
+                    <option value="TI">TI - Tarjeta de Identidad</option>
+                    <option value="CE">CE - Cédula de Extranjería</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                </div>
+                <span class="error-text"><i class="fa-solid fa-circle-exclamation"></i> Selecciona un tipo de documento</span>
+              </div>
+
+              <!-- Documento -->
+              <div class="form-group">
+                <label for="documento">NÚMERO DE DOCUMENTO <span class="required">*</span></label>
+                <div class="input-container">
+                  <i class="fa-solid fa-hashtag field-icon"></i>
+                  <input type="text" id="documento" name="documento" placeholder="Ej: 1020304050" required pattern="[a-zA-Z0-9]{5,20}">
+                </div>
+                <span class="error-text"><i class="fa-solid fa-circle-exclamation"></i> Mínimo 5 caracteres alfanuméricos</span>
+              </div>
+
+              <!-- Nombre Completo -->
+              <div class="form-group full-width">
+                <label for="nombre_apellidos">NOMBRE COMPLETO <span class="required">*</span></label>
+                <div class="input-container">
+                  <i class="fa-solid fa-user field-icon"></i>
+                  <input type="text" id="nombre_apellidos" name="nombre_apellidos" placeholder="Ej: Juan Sebastián Pérez Gómez" required minlength="3">
+                </div>
+                <span class="error-text"><i class="fa-solid fa-circle-exclamation"></i> Ingresa tu nombre completo</span>
+              </div>
+
+              <!-- Teléfono -->
+              <div class="form-group">
+                <label for="telefono">TELÉFONO DE CONTACTO <span class="required">*</span></label>
+                <div class="input-container">
+                  <i class="fa-solid fa-phone field-icon"></i>
+                  <input type="tel" id="telefono" name="telefono" placeholder="Ej: 3001234567" required pattern="[0-9]{7,15}" inputmode="numeric">
+                </div>
+                <span class="error-text"><i class="fa-solid fa-circle-exclamation"></i> Ingresa un número válido (mín. 7 dígitos)</span>
+              </div>
+
+              <!-- Correo Electrónico -->
+              <div class="form-group">
+                <label for="email">CORREO ELECTRÓNICO <span class="required">*</span></label>
+                <div class="input-container">
+                  <i class="fa-solid fa-envelope field-icon"></i>
+                  <input type="email" id="email" name="email" placeholder="nombre@correo.com" required>
+                </div>
+                <span class="error-text"><i class="fa-solid fa-circle-exclamation"></i> Ingresa un correo electrónico válido</span>
+              </div>
+
+              <!-- Dirección -->
+              <div class="form-group full-width">
+                <label for="direccion">DIRECCIÓN DE RESIDENCIA / ENTREGA <span class="required">*</span></label>
+                <div class="input-container">
+                  <i class="fa-solid fa-map-location-dot field-icon"></i>
+                  <input type="text" id="direccion" name="direccion" placeholder="Ej: Av. Las Palmas #45-12, Apto 502" required>
+                </div>
+                <span class="error-text"><i class="fa-solid fa-circle-exclamation"></i> La dirección es requerida</span>
+              </div>
+
+              <!-- Preferencia Gastronómica -->
+              <div class="form-group full-width">
+                <label for="preferencia">PREFERENCIA GASTRONÓMICA <span class="required">*</span></label>
+                <div class="input-container select-container">
+                  <i class="fa-solid fa-utensils field-icon"></i>
+                  <select id="preferencia" name="preferencia" required>
+                    <option value="" disabled selected>Selecciona tu menú favorito...</option>
+                    <option value="Platos Típicos & Tradicionales">Platos Típicos & Tradicionales</option>
+                    <option value="Comida Vegetariana / Vegana">Comida Vegetariana / Vegana</option>
+                    <option value="Repostería & Postres Artesanales">Repostería & Postres Artesanales</option>
+                    <option value="Comida Internacional & Gourmet">Comida Internacional & Gourmet</option>
+                    <option value="Menú Fitness & Balanceado">Menú Fitness & Balanceado</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down arrow-icon"></i>
+                </div>
+                <span class="error-text"><i class="fa-solid fa-circle-exclamation"></i> Selecciona una preferencia gastronómica</span>
+              </div>
+
+              <!-- Contraseña -->
+              <div class="form-group full-width">
+                <label for="contrasena">CONTRASEÑA SEGURA <span class="required">*</span></label>
+                <div class="input-container password-container">
+                  <i class="fa-solid fa-lock field-icon"></i>
+                  <input type="password" id="contrasena" name="contrasena" placeholder="Mínimo 8 caracteres" required minlength="8">
+                  <button type="button" class="btn-toggle-pwd" id="togglePassword" title="Mostrar/Ocultar contraseña" aria-label="Mostrar/Ocultar contraseña">
+                    <i class="fa-solid fa-eye" id="eyeIcon"></i>
+                  </button>
+                </div>
+                <span class="error-text"><i class="fa-solid fa-circle-exclamation"></i> La contraseña debe tener al menos 8 caracteres</span>
+              </div>
+
+            </div>
+
+            <!-- Submit Button & Privacy Policy -->
+            <div class="form-footer">
+              <label class="custom-checkbox-label">
+                <input type="checkbox" id="terms" required>
+                <span class="checkmark"></span>
+                <span class="terms-text">He leído y acepto la <a href="#" class="terms-link">política de privacidad</a> y el tratamiento de mis datos personales.</span>
+              </label>
+              <span class="error-text terms-error" id="termsError"><i class="fa-solid fa-circle-exclamation"></i> Debes aceptar la política de privacidad para continuar</span>
+
+              <button type="submit" class="btn-submit" id="submitBtn">
+                <span>Completar Registro</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal de confirmación -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal-card">
+      <div class="modal-icon-badge">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <h2>¡Registro Exitoso!</h2>
+      <p class="modal-desc">Bienvenido a <strong>Nutrimundo</strong>. Tu cuenta ha sido creada correctamente.</p>
+      
+      <div class="modal-summary" id="modalSummary">
+        <!-- Rellenado dinámicamente con JS -->
+      </div>
+      
+      <!-- Botón con redirección a Iniciar Sesión -->
+      <button type="button" class="btn-modal-close" id="closeModal">
+        <span>Iniciar Sesión</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <script src="js/register.js"></script>
+</body>
+</html>

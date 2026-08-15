@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NUTRIMUNDO</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/styleNav.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         BARRA DE NAVEGACIÓN
+    ========================== -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            NUTRIMUNDO
+        </div>
+
+        <nav class="menu">
+
+            <a href="index.html">
+                Inicio
+            </a>
+
+            <a href="productos.html">
+                Productos
+            </a>
+
+            <a href="contactenos.html">
+                Contáctenos
+            </a>
+
+        </nav>
+
+
+        <!-- BUSCADOR -->
+
+        <div class="buscador">
+
+            <input
+                type="text"
+                id="busqueda"
+                placeholder="Buscar productos..."
+            >
+
+            <button id="btnBuscar">
+                🔍
+            </button>
+
+        </div>
+
+
+        <!-- USUARIOS -->
+
+        <div class="usuarios">
+
+            <a
+                href="register.html"
+                class="registrarse"
+            >
+                Registrarme
+            </a>
+
+            <!-- CORREGIDO -->
+            <a
+                href="login.html"
+                class="acceder"
+            >
+                Iniciar Sesión
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
+         CONTENIDO PRINCIPAL
+    ========================== -->
+
+    <main class="inicio">
+
+
+        <!-- =========================
+             PARTE IZQUIERDA
+        ========================== -->
+
+        <section class="menu-informacion">
+
+
+            <!-- 1. COMIDA VERDE -->
+
+            <article
+                class="apartado"
+                onclick="mostrarContenido('comidaVerde')"
+            >
+
+                <div class="icono">
+                    🌱
+                </div>
+
+                <div class="texto-apartado">
+
+                    <h2>
+                        1. Comida Verde
+                    </h2>
+
+                    <p>
+                        Platos preparados con ingredientes frescos,
+                        naturales y llenos de vida.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- 2. BALANCE DE CALORÍAS -->
+
+            <article
+                class="apartado"
+                onclick="mostrarContenido('balanceCalorias')"
+            >
+
+                <div class="icono">
+                    ⚖️
+                </div>
+
+                <div class="texto-apartado">
+
+                    <h2>
+                        2. Balance de Calorías
+                    </h2>
+
+                    <p>
+                        Conoce el valor nutricional de cada plato
+                        y encuentra un equilibrio.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- 3. MENÚ DEL DÍA -->
+
+            <article
+                class="apartado"
+                onclick="mostrarContenido('menuDia')"
+            >
+
+                <div class="icono">
+                    📅
+                </div>
+
+                <div class="texto-apartado">
+
+                    <h2>
+                        3. Menú del Día
+                    </h2>
+
+                    <p>
+                        Descubre nuestras opciones diarias,
+                        nutritivas y deliciosas.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- 4. PLATOS ESTRELLAS -->
+
+            <article
+                class="apartado"
+                onclick="mostrarContenido('platosEstrellas')"
+            >
+
+                <div class="icono">
+                    ⭐
+                </div>
+
+                <div class="texto-apartado">
+
+                    <h2>
+                        4. Platos Estrellas
+                    </h2>
+
+                    <p>
+                        Conoce los platos favoritos de nuestros clientes.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- 5. INFORMACIÓN DEL PLATO -->
+
+            <article
+                class="apartado"
+                onclick="mostrarContenido('infoPlato')"
+            >
+
+                <div class="icono">
+                    ℹ️
+                </div>
+
+                <div class="texto-apartado">
+
+                    <h2>
+                        5. Información sobre el plato seleccionado
+                    </h2>
+
+                    <p>
+                        Conoce ingredientes, beneficios e información
+                        nutricional.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- =========================
+             PARTE DERECHA
+        ========================== -->
+
+        <section class="contenido-derecha">
+
+
+            <!-- IMAGEN INICIAL -->
+
+            <div
+                id="contenidoInicial"
+                class="contenido-panel activo"
+            >
+
+                <img
+                    src="./img/vida.saludable.jpn.jpg"
+                    alt="Comida saludable"
+                >
+
+            </div>
+
+
+
+            <!-- =========================
+                 COMIDA VERDE
+            ========================== -->
+
+            <div
+                id="comidaVerde"
+                class="contenido-panel"
+            >
+
+                <h2>
+                    🌱 Comida Verde
+                </h2>
+
+                <p>
+                    La comida verde se basa en alimentos frescos,
+                    naturales y ricos en nutrientes.
+                </p>
+
+                <p>
+                    Incluye verduras, frutas, legumbres y otros
+                    alimentos que aportan vitaminas, minerales
+                    y fibra.
+                </p>
+
+                <h3>
+                    Beneficios
+                </h3>
+
+                <ul>
+
+                    <li>
+                        Ayuda a mantener una alimentación equilibrada.
+                    </li>
+
+                    <li>
+                        Aporta vitaminas y minerales.
+                    </li>
+
+                    <li>
+                        Favorece el consumo de alimentos naturales.
+                    </li>
+
+                    <li>
+                        Contribuye al bienestar general.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- =========================
+                 BALANCE DE CALORÍAS
+            ========================== -->
+
+            <div
+                id="balanceCalorias"
+                class="contenido-panel"
+            >
+
+                <h2>
+                    ⚖️ Balance de Calorías
+                </h2>
+
+                <p>
+                    El balance energético es la relación entre
+                    la energía que obtenemos de los alimentos
+                    y la que utiliza nuestro cuerpo.
+                </p>
+
+                <h3>
+                    ¿Por qué es importante?
+                </h3>
+
+                <p>
+                    Conocer el valor nutricional de los alimentos
+                    permite tomar mejores decisiones y mantener
+                    una alimentación equilibrada.
+                </p>
+
+                <div class="tarjeta-info">
+
+                    <h3>
+                        🥗 Alimentación equilibrada
+                    </h3>
+
+                    <p>
+                        Combina diferentes grupos de alimentos
+                        para obtener los nutrientes que necesita
+                        el organismo.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 MENÚ DEL DÍA
+            ========================== -->
+
+            <div
+                id="menuDia"
+                class="contenido-panel"
+            >
+
+                <h2>
+                    📅 Menú del Día
+                </h2>
+
+                <div class="menu-dia">
+
+                    <div class="comida">
+
+                        <h3>
+                            🌅 Desayuno
+                        </h3>
+
+                        <p>
+                            Avena con fruta y yogur.
+                        </p>
+
+                    </div>
+
+
+                    <div class="comida">
+
+                        <h3>
+                            ☀️ Almuerzo
+                        </h3>
+
+                        <p>
+                            Pollo a la plancha, arroz y ensalada.
+                        </p>
+
+                    </div>
+
+
+                    <div class="comida">
+
+                        <h3>
+                            🍎 Merienda
+                        </h3>
+
+                        <p>
+                            Fruta fresca y frutos secos.
+                        </p>
+
+                    </div>
+
+
+                    <div class="comida">
+
+                        <h3>
+                            🌙 Cena
+                        </h3>
+
+                        <p>
+                            Ensalada de verduras con proteína.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 PLATOS ESTRELLAS
+            ========================== -->
+
+            <div
+                id="platosEstrellas"
+                class="contenido-panel"
+            >
+
+                <h2>
+                    ⭐ Platos Estrellas
+                </h2>
+
+
+                <div class="plato">
+
+                    <h3>
+                        🥗 Ensalada Nutritiva
+                    </h3>
+
+                    <p>
+                        Mezcla de vegetales frescos, aguacate
+                        y una fuente de proteína.
+                    </p>
+
+                </div>
+
+
+                <div class="plato">
+
+                    <h3>
+                        🍗 Pollo Saludable
+                    </h3>
+
+                    <p>
+                        Pollo acompañado de vegetales y una
+                        porción equilibrada de carbohidratos.
+                    </p>
+
+                </div>
+
+
+                <div class="plato">
+
+                    <h3>
+                        🥑 Bowl Verde
+                    </h3>
+
+                    <p>
+                        Una combinación de vegetales, frutas
+                        y alimentos naturales.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 INFORMACIÓN DEL PLATO
+            ========================== -->
+
+            <div
+                id="infoPlato"
+                class="contenido-panel"
+            >
+
+                <h2>
+                    ℹ️ Información sobre el plato seleccionado
+                </h2>
+
+                <h3>
+                    🥕 Ingredientes
+                </h3>
+
+                <p>
+                    Aquí podrás consultar los ingredientes
+                    utilizados en el plato seleccionado.
+                </p>
+
+
+                <h3>
+                    📊 Información nutricional
+                </h3>
+
+                <p>
+                    Podrás conocer las características
+                    nutricionales del plato.
+                </p>
+
+
+                <h3>
+                    💚 Beneficios
+                </h3>
+
+                <p>
+                    Consulta los principales beneficios de
+                    los ingredientes utilizados.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="./js/style.js"></script>
+
+</body>
+
+</html>

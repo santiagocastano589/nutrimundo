@@ -1,0 +1,139 @@
+<<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestros Productos | FreshFood</title>
+  
+  <!-- Fuentes e Iconos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
+  <!-- CONEXIÓN AL ARCHIVO CSS -->
+  <link rel="stylesheet" href="css/productos.css">
+</head>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestros Productos | FreshFood</title>
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/productos.css">
+</head>
+<body>
+
+  <!-- Encabezado / Navegación -->
+  <header>
+    <div class="logo">NUTRIMUNDO
+    </div>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="productos.html" class="active">Productos</a>
+      <a href="#">Menú</a>
+      <a href="#">Blog</a>
+      <a href="contactenos.html">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- Contenedor Principal -->
+  <main class="main-container">
+    
+    <!-- Encabezado de Sección Centrado -->
+    <div class="section-header" style="text-align: center; margin-bottom: 2rem;">
+      <h1 class="section-title">NUESTROS PRODUCTOS</h1>
+      <p class="section-subtitle">Descubre opciones frescas y saludables preparadas al instante.</p>
+    </div>
+
+    <!-- Barra de Búsqueda y Filtros con Atributos Actualizados -->
+    <div class="controls-bar">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInput" placeholder="Buscar producto...">
+      </div>
+
+      <div class="category-filters">
+        <button class="filter-btn active" data-category="todos">Todos</button>
+        <button class="filter-btn" data-category="ensaladas">Ensaladas</button>
+        <button class="filter-btn" data-category="platos-fuertes">Platos Fuertes</button>
+        <button class="filter-btn" data-category="bebidas">Bebidas</button>
+      </div>
+    </div>
+
+    <!-- Rejilla de Productos con data-category en cada tarjeta -->
+    <div class="products-grid">
+
+      <!-- Producto 1: Ensalada -->
+      <article class="product-card" data-category="ensaladas">
+        <div class="product-img-wrapper">
+          <span class="product-badge">Popular</span>
+          <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80" alt="Bowl de Pollo y Palta">
+        </div>
+        <div class="product-content">
+          <h2 class="product-title">Bowl de Pollo y Palta</h2>
+          <p class="product-description">Pollo a la parrilla, aguacate fresco, quinoa y espinaca.</p>
+          <div class="product-footer">
+            <span class="product-price">$ 24.900</span>
+            <button class="btn-add-cart">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Producto 2: Ensalada -->
+      <article class="product-card" data-category="ensaladas">
+        <div class="product-img-wrapper">
+          <span class="product-badge">Nuevo</span>
+          <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Ensalada de Salmón">
+        </div>
+        <div class="product-content">
+          <h2 class="product-title">Ensalada de Salmón</h2>
+          <p class="product-description">Salmón ahumado, mix de lechugas, tomates cherry y aderezo especial.</p>
+          <div class="product-footer">
+            <span class="product-price">$ 28.500</span>
+            <button class="btn-add-cart">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Producto 3: Plato Fuerte -->
+      <article class="product-card" data-category="platos-fuertes">
+        <div class="product-img-wrapper">
+          <span class="product-badge">Saludable</span>
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80" alt="Wrap de Pavo y Vegetales">
+        </div>
+        <div class="product-content">
+          <h2 class="product-title">Wrap de Pavo y Vegetales</h2>
+          <p class="product-description">Tortilla integral, pechuga de pavo, pimentón asado y queso crema ligero.</p>
+          <div class="product-footer">
+            <span class="product-price">$ 19.900</span>
+            <button class="btn-add-cart">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Producto 4: Bebida -->
+      <article class="product-card" data-category="bebidas">
+        <div class="product-img-wrapper">
+          <span class="product-badge">Natural</span>
+          <img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=600&q=80" alt="Smoothie Verde Detox">
+        </div>
+        <div class="product-content">
+          <h2 class="product-title">Smoothie Verde Detox</h2>
+          <p class="product-description">Manzana verde, espinaca, jengibre, pepino y jugo de limón recién exprimido.</p>
+          <div class="product-footer">
+            <span class="product-price">$ 12.000</span>
+            <button class="btn-add-cart">Añadir</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <script src="js/productos.js"></script>
+</body>
+</html>

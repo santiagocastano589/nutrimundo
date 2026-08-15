@@ -1,0 +1,705 @@
+/* =========================================
+   CONFIGURACIÓN GENERAL
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f5faf5;
+
+    color: #333;
+
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   BARRA DE NAVEGACIÓN
+========================================= */
+
+.navbar {
+
+    width: 100%;
+
+    min-height: 105px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 20px 5%;
+
+    gap: 35px;
+
+    background: #eaf8ef;
+
+    border-bottom: 2px solid #b9dfbd;
+
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+
+}
+
+
+/* LOGO */
+
+.logo {
+
+    font-size: 36px;
+
+    font-weight: bold;
+
+    color: #111;
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================================
+   MENÚ
+========================================= */
+
+.menu {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 35px;
+
+}
+
+
+.menu a {
+
+    text-decoration: none;
+
+    color: #176b2c;
+
+    font-size: 19px;
+
+    transition: 0.3s;
+
+}
+
+
+.menu a:hover {
+
+    color: #42a94b;
+
+}
+
+
+/* =========================================
+   BUSCADOR
+========================================= */
+
+.buscador {
+
+    display: flex;
+
+    align-items: center;
+
+    flex: 1;
+
+    max-width: 650px;
+
+    margin-left: auto;
+
+}
+
+
+.buscador input {
+
+    width: 100%;
+
+    height: 50px;
+
+    border: 2px solid #d0d0d0;
+
+    border-radius: 30px 0 0 30px;
+
+    padding: 0 20px;
+
+    font-size: 16px;
+
+    outline: none;
+
+}
+
+
+.buscador input:focus {
+
+    border-color: #4caf50;
+
+}
+
+
+.buscador button {
+
+    width: 60px;
+
+    height: 50px;
+
+    border: none;
+
+    border-radius: 0 30px 30px 0;
+
+    background: #4caf50;
+
+    cursor: pointer;
+
+    font-size: 20px;
+
+}
+
+
+.buscador button:hover {
+
+    background: #38963e;
+
+}
+
+
+/* =========================================
+   USUARIOS
+========================================= */
+
+.usuarios {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    white-space: nowrap;
+
+}
+
+
+.usuarios a {
+
+    text-decoration: none;
+
+    font-size: 18px;
+
+}
+
+
+.registrarse {
+
+    background: #59b95f;
+
+    color: white;
+
+    padding: 14px 25px;
+
+    border-radius: 30px;
+
+    font-weight: bold;
+
+}
+
+
+.registrarse:hover {
+
+    background: #449f4a;
+
+}
+
+
+.acceder {
+
+    color: #3ca647;
+
+    border: 2px solid #3ca647;
+
+    padding: 12px 25px;
+
+    border-radius: 30px;
+
+}
+
+
+.acceder:hover {
+
+    background: #3ca647;
+
+    color: white;
+
+}
+
+
+/* =========================================
+   CONTENIDO PRINCIPAL
+========================================= */
+
+.inicio {
+
+    width: 90%;
+
+    max-width: 1500px;
+
+    margin: 60px auto;
+
+    display: grid;
+
+    grid-template-columns: 43% 57%;
+
+    gap: 35px;
+
+    align-items: stretch;
+
+}
+
+
+/* =========================================
+   PARTE IZQUIERDA
+========================================= */
+
+.menu-informacion {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+}
+
+
+/* CADA APARTADO */
+
+.apartado {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 20px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.apartado:hover {
+
+    background: #e5f4df;
+
+    transform: translateX(8px);
+
+}
+
+
+/* ICONOS */
+
+.icono {
+
+    min-width: 78px;
+
+    width: 78px;
+
+    height: 78px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #dff1d7;
+
+    border-radius: 20px;
+
+    font-size: 38px;
+
+}
+
+
+/* TEXTO */
+
+.texto-apartado {
+
+    flex: 1;
+
+}
+
+
+.texto-apartado h2 {
+
+    color: #287b35;
+
+    font-size: 25px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.texto-apartado p {
+
+    color: #5c5c5c;
+
+    font-size: 18px;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================================
+   PARTE DERECHA
+========================================= */
+
+.contenido-derecha {
+
+    width: 100%;
+
+    min-height: 650px;
+
+    position: relative;
+
+}
+
+
+/* =========================================
+   PANELES
+========================================= */
+
+.contenido-panel {
+
+    width: 100%;
+
+    min-height: 650px;
+
+    padding: 45px;
+
+    background: white;
+
+    border-radius: 25px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
+
+    display: none;
+
+    overflow-y: auto;
+
+}
+
+
+/* PANEL ACTIVO */
+
+.contenido-panel.activo {
+
+    display: block;
+
+}
+
+
+/* =========================================
+   IMAGEN PRINCIPAL
+========================================= */
+
+#contenidoInicial {
+
+    padding: 0;
+
+    overflow: hidden;
+
+}
+
+
+#contenidoInicial img {
+
+    width: 100%;
+
+    height: 650px;
+
+    object-fit: cover;
+
+    border-radius: 25px;
+
+    display: block;
+
+}
+
+
+/* =========================================
+   TÍTULOS DE INFORMACIÓN
+========================================= */
+
+.contenido-panel h2 {
+
+    color: #287b35;
+
+    font-size: 32px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.contenido-panel h3 {
+
+    color: #398844;
+
+    font-size: 21px;
+
+    margin-top: 25px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.contenido-panel p {
+
+    color: #555;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    margin-bottom: 15px;
+
+}
+
+
+/* =========================================
+   LISTAS
+========================================= */
+
+.contenido-panel ul {
+
+    padding-left: 25px;
+
+    color: #555;
+
+    line-height: 2;
+
+    font-size: 17px;
+
+}
+
+
+/* =========================================
+   TARJETA DE INFORMACIÓN
+========================================= */
+
+.tarjeta-info {
+
+    margin-top: 30px;
+
+    padding: 25px;
+
+    background: #eef8e9;
+
+    border-radius: 18px;
+
+    border-left: 6px solid #4caf50;
+
+}
+
+
+.tarjeta-info h3 {
+
+    margin-top: 0;
+
+}
+
+
+/* =========================================
+   MENÚ DEL DÍA
+========================================= */
+
+.menu-dia {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+
+}
+
+
+.comida {
+
+    padding: 22px;
+
+    background: #eef8e9;
+
+    border-radius: 18px;
+
+    border-left: 5px solid #4caf50;
+
+}
+
+
+.comida h3 {
+
+    margin-top: 0;
+
+}
+
+
+/* =========================================
+   PLATOS ESTRELLAS
+========================================= */
+
+.plato {
+
+    padding: 22px;
+
+    margin-bottom: 18px;
+
+    background: #eef8e9;
+
+    border-radius: 18px;
+
+    border-left: 5px solid #4caf50;
+
+}
+
+
+.plato h3 {
+
+    margin-top: 0;
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .navbar {
+
+        flex-wrap: wrap;
+
+        gap: 20px;
+
+    }
+
+    .buscador {
+
+        order: 3;
+
+        width: 100%;
+
+        max-width: none;
+
+    }
+
+    .inicio {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .navbar {
+
+        padding: 20px;
+
+    }
+
+    .logo {
+
+        font-size: 28px;
+
+    }
+
+    .menu {
+
+        gap: 15px;
+
+    }
+
+    .menu a {
+
+        font-size: 16px;
+
+    }
+
+    .usuarios {
+
+        width: 100%;
+
+        justify-content: center;
+
+    }
+
+    .inicio {
+
+        width: 94%;
+
+        margin: 30px auto;
+
+    }
+
+    .apartado {
+
+        padding: 12px;
+
+    }
+
+    .icono {
+
+        min-width: 60px;
+
+        width: 60px;
+
+        height: 60px;
+
+        font-size: 28px;
+
+    }
+
+    .texto-apartado h2 {
+
+        font-size: 20px;
+
+    }
+
+    .texto-apartado p {
+
+        font-size: 15px;
+
+    }
+
+    .contenido-panel {
+
+        padding: 25px;
+
+    }
+
+    .menu-dia {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}

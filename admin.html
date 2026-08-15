@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración | Nutrimundo</title>
+
+  <!-- 🛡️ Seguridad: Solo Administradores -->
+  <script src="./js/auth-guard.js" data-auth="admin"></script>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./css/admin.css">
+</head>
+
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="nav-container">
+        
+        <!-- Logo -->
+        <a href="#" class="logo">
+          <div class="logo-badge">
+            <i class="fa-solid fa-leaf"></i>
+          </div>
+          <div class="logo-text-group">
+            <span class="logo-brand">NUTRIMUNDO</span>
+            <span class="logo-tagline">Panel de Administración</span>
+          </div>
+        </a>
+
+        <!-- Admin Profile & Logout -->
+        <div class="admin-profile">
+          <div class="profile-info">
+            <span class="admin-badge"><i class="fa-solid fa-shield-halved"></i> Administrador</span>
+            <span class="admin-name" id="nombreAdmin">Admin</span>
+          </div>
+          <button type="button" class="btn-logout" id="btnLogout" title="Cerrar sesión">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <span>Salir</span>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="main-wrapper">
+    <div class="admin-container">
+
+      <!-- Navigation Tabs (Platillos vs Usuarios) -->
+      <section class="admin-tabs-nav">
+        <button type="button" class="admin-tab-btn active" data-tab="tab-platillos">
+          <i class="fa-solid fa-utensils"></i>
+          <span>Gestión de Platillos & Menú</span>
+        </button>
+        <button type="button" class="admin-tab-btn" data-tab="tab-usuarios">
+          <i class="fa-solid fa-users"></i>
+          <span>Directorio de Usuarios</span>
+        </button>
+      </section>
+
+      <!-- =====================================================
+           PESTAÑA 1: GESTIÓN DE PLATILLOS (CRUD)
+      ====================================================== -->
+      <div class="admin-tab-pane active" id="tab-platillos">
+        
+        <div class="dashboard-header">
+          <div>
+            <span class="header-badge"><i class="fa-solid fa-bowl-food"></i> Catálogo Gastronómico</span>
+            <h1 class="main-title">Platillos y Productos</h1>
+            <p class="main-subtitle">Crea, modifica los precios o elimina platillos del menú de los clientes.</p>
+          </div>
+
+          <button type="button" class="btn-primary" id="btnOpenCreateDish">
+            <i class="fa-solid fa-plus"></i>
+            <span>Nuevo Platillo</span>
+          </button>
+        </div>
+
+        <!-- Tabla de Platillos -->
+        <div class="table-card">
+          <div class="table-controls">
+            <div class="search-box">
+              <i class="fa-solid fa-magnifying-glass search-icon"></i>
+              <input type="text" id="searchDishInput" placeholder="Buscar platillo por nombre o categoría...">
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-select-wrapper">
+                <i class="fa-solid fa-filter filter-icon"></i>
+                <select id="filterDishCategory">
+                  <option value="all">Todas las Categorías</option>
+                  <option value="Fitness">Fitness & Balance</option>
+                  <option value="Vegano">Vegano / Vegetariano</option>
+                  <option value="Tipico">Platos Típicos</option>
+                  <option value="Gourmet">Gourmet & Internacional</option>
+                  <option value="Reposteria">Repostería</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="users-table">
+              <thead>
+                <tr>
+                  <th>FOTO</th>
+                  <th>NOMBRE DEL PLATILLO</th>
+                  <th>CATEGORÍA</th>
+                  <th>PRECIO (COP)</th>
+                  <th>ETIQUETA / TAG</th>
+                  <th style="text-align: center;">ACCIONES</th>
+                </tr>
+              </thead>
+              <tbody id="dishesTableBody">
+                <!-- Rellenado dinámicamente con JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-footer">
+            <span id="dishesCount">Cargando platillos...</span>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- =====================================================
+           PESTAÑA 2: DIRECTORIO DE USUARIOS
+      ====================================================== -->
+      <div class="admin-tab-pane" id="tab-usuarios">
+
+        <div class="dashboard-header">
+          <div>
+            <span class="header-badge"><i class="fa-solid fa-users-gear"></i> Base de Datos</span>
+            <h1 class="main-title">Usuarios Registrados</h1>
+            <p class="main-subtitle">Consulta y filtra la lista de clientes y administradores de Nutrimundo.</p>
+          </div>
+
+          <button type="button" class="btn-refresh" id="btnRefreshUsers">
+            <i class="fa-solid fa-rotate-right" id="refreshIcon"></i>
+            <span>Actualizar</span>
+          </button>
+        </div>
+
+        <!-- KPIs Usuarios -->
+        <section class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon icon-users"><i class="fa-solid fa-users"></i></div>
+            <div class="stat-data">
+              <span class="stat-value" id="statTotalUsers">0</span>
+              <span class="stat-label">Total Usuarios</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon icon-clients"><i class="fa-solid fa-user"></i></div>
+            <div class="stat-data">
+              <span class="stat-value" id="statClients">0</span>
+              <span class="stat-label">Clientes</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon icon-admins"><i class="fa-solid fa-user-shield"></i></div>
+            <div class="stat-data">
+              <span class="stat-value" id="statAdmins">0</span>
+              <span class="stat-label">Administradores</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon icon-pref"><i class="fa-solid fa-utensils"></i></div>
+            <div class="stat-data">
+              <span class="stat-value" id="statTopPref" style="font-size: 1.05rem;">-</span>
+              <span class="stat-label">Preferencia Líder</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tabla de Usuarios -->
+        <div class="table-card">
+          <div class="table-controls">
+            <div class="search-box">
+              <i class="fa-solid fa-magnifying-glass search-icon"></i>
+              <input type="text" id="searchInput" placeholder="Buscar por nombre, correo o documento...">
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-select-wrapper">
+                <i class="fa-solid fa-filter filter-icon"></i>
+                <select id="filterRole">
+                  <option value="all">Todos los Roles</option>
+                  <option value="usuario">Solo Clientes</option>
+                  <option value="admin">Solo Administradores</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="users-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>USUARIO</th>
+                  <th>DOCUMENTO</th>
+                  <th>CONTACTO</th>
+                  <th>PREFERENCIA</th>
+                  <th>ROL</th>
+                  <th style="text-align: center;">ACCIONES</th>
+                </tr>
+              </thead>
+              <tbody id="usersTableBody">
+                <!-- Rellenado dinámicamente -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-footer">
+            <span id="showingCount">Mostrando usuarios</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- =====================================================
+       MODAL CREAR / EDITAR PLATILLO
+  ====================================================== -->
+  <div class="modal-overlay" id="modalDishForm">
+    <div class="modal-card modal-form-card">
+      <button type="button" class="btn-close-modal" id="btnCloseDishModal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="modal-icon-badge">
+        <i class="fa-solid fa-utensils"></i>
+      </div>
+
+      <h2 id="modalDishTitle">Nuevo Platillo Gastronómico</h2>
+      <p class="modal-desc">Completa la información para publicarlo en el menú de clientes.</p>
+
+      <form id="formDish" novalidate>
+        <input type="hidden" id="dish_id" name="dish_id" value="">
+
+        <div class="dish-form-grid">
+          
+          <div class="form-group full-width">
+            <label for="dish_nombre">NOMBRE DEL PLATILLO <span class="required">*</span></label>
+            <div class="input-container">
+              <i class="fa-solid fa-font field-icon"></i>
+              <input type="text" id="dish_nombre" name="nombre" placeholder="Ej: Salmón Grillé con Risotto de Setas" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="dish_categoria">CATEGORÍA <span class="required">*</span></label>
+            <div class="input-container select-container">
+              <i class="fa-solid fa-tag field-icon"></i>
+              <select id="dish_categoria" name="categoria" required>
+                <option value="Fitness">🥗 Fitness & Balance</option>
+                <option value="Vegano">🌱 Vegano & Vegetariano</option>
+                <option value="Tipico">🍲 Platos Típicos</option>
+                <option value="Gourmet">🥩 Gourmet & Internacional</option>
+                <option value="Reposteria">🍰 Repostería Artesanal</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="dish_precio">PRECIO EN PESOS (COP) <span class="required">*</span></label>
+            <div class="input-container">
+              <i class="fa-solid fa-dollar-sign field-icon"></i>
+              <input type="number" id="dish_precio" name="precio" placeholder="Ej: 28000" min="1000" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="dish_tag">ETIQUETA / BADGE</label>
+            <div class="input-container">
+              <i class="fa-solid fa-certificate field-icon"></i>
+              <input type="text" id="dish_tag" name="tag" placeholder="Ej: 🥗 Alto en Proteína">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="dish_img">URL DE LA IMAGEN</label>
+            <div class="input-container">
+              <i class="fa-solid fa-image field-icon"></i>
+              <input type="url" id="dish_img" name="img" placeholder="https://images.unsplash.com/...">
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="dish_desc">DESCRIPCIÓN DE INGREDIENTES <span class="required">*</span></label>
+            <div class="input-container">
+              <textarea id="dish_desc" name="desc" rows="3" placeholder="Describe los ingredientes principales y preparación..." required></textarea>
+            </div>
+          </div>
+
+        </div>
+
+        <button type="submit" class="btn-submit" id="btnSaveDish">
+          <i class="fa-solid fa-floppy-disk"></i>
+          <span>Guardar Platillo</span>
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script src="./js/admin.js"></script>
+
+</body>
+</html>

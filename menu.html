@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú & Pedidos | Nutrimundo Gastronomía</title>
+
+  <!-- 🛡️ Seguridad: Requiere haber iniciado sesión -->
+  <script src="./js/auth-guard.js" data-auth="usuario"></script>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./css/menu.css">
+</head>
+
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="nav-container">
+        
+        <!-- Logo -->
+        <a href="menu.html" class="logo">
+          <div class="logo-badge">
+            <i class="fa-solid fa-leaf"></i>
+          </div>
+          <div class="logo-text-group">
+            <span class="logo-brand">NUTRIMUNDO</span>
+            <span class="logo-tagline">Menú & Catering</span>
+          </div>
+        </a>
+
+        <!-- Enlaces y Carrito -->
+        <div class="nav-right">
+          <ul class="nav-menu">
+            <li><a href="menu.html" class="nav-link active">Menú</a></li>
+            <li><a href="perfil.html" class="nav-link">Mi Perfil</a></li>
+          </ul>
+
+          <!-- Botón flotante de Carrito -->
+          <button type="button" class="btn-cart-toggle" id="btnOpenCart" aria-label="Abrir carrito">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-badge" id="cartCountBadge">0</span>
+          </button>
+
+          <!-- Cerrar Sesión -->
+          <button type="button" class="btn-logout" id="btnLogout" title="Cerrar sesión">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <span>Salir</span>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="main-wrapper">
+    <div class="menu-container">
+
+      <!-- Hero / Bienvenida -->
+      <section class="menu-hero">
+        <span class="header-badge"><i class="fa-solid fa-sparkles"></i> Gastronomía Saludable</span>
+        <h1 class="main-title">Nuestra Carta & Platillos</h1>
+        <p class="main-subtitle">Ingredientes 100% frescos, balanceados y preparados por chefs profesionales.</p>
+      </section>
+
+      <!-- Filtros y Búsqueda -->
+      <section class="filters-bar">
+        
+        <!-- Buscador -->
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="menuSearch" placeholder="Buscar platillo o ingrediente...">
+        </div>
+
+        <!-- Categorías -->
+        <div class="categories-list" id="categoryFilter">
+          <button type="button" class="cat-pill active" data-cat="all">Todos</button>
+          <button type="button" class="cat-pill" data-cat="Fitness">🥗 Fitness & Balance</button>
+          <button type="button" class="cat-pill" data-cat="Vegano">🌱 Vegano & Vegetariano</button>
+          <button type="button" class="cat-pill" data-cat="Tipico">🍲 Platos Típicos</button>
+          <button type="button" class="cat-pill" data-cat="Gourmet">🥩 Gourmet & Internacional</button>
+          <button type="button" class="cat-pill" data-cat="Reposteria">🍰 Repostería Artesanal</button>
+        </div>
+
+      </section>
+
+      <!-- Grid de Platillos -->
+      <section class="dishes-grid" id="dishesGrid">
+        <!-- Renderizado dinámicamente con JS -->
+      </section>
+
+    </div>
+  </main>
+
+  <!-- =====================================================
+       PANEL LATERAL: CARRITO DE COMPRAS (DRAWER)
+  ====================================================== -->
+  <div class="cart-drawer-overlay" id="cartOverlay">
+    <aside class="cart-drawer" id="cartDrawer">
+      
+      <!-- Drawer Header -->
+      <div class="cart-header">
+        <div class="cart-title-group">
+          <i class="fa-solid fa-bag-shopping cart-icon"></i>
+          <h2>Tu Pedido</h2>
+          <span class="cart-items-total" id="cartDrawerItemsCount">(0 platillos)</span>
+        </div>
+        <button type="button" class="btn-close-drawer" id="btnCloseCart" aria-label="Cerrar carrito">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Cart Items List -->
+      <div class="cart-body" id="cartItemsContainer">
+        <!-- Rellenado con JS o estado vacío -->
+      </div>
+
+      <!-- Cart Footer & Totals -->
+      <div class="cart-footer">
+        <div class="summary-rows">
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <strong id="cartSubtotal">$0 COP</strong>
+          </div>
+          <div class="summary-row">
+            <span>Envío a Domicilio</span>
+            <strong id="cartShipping">$5.000 COP</strong>
+          </div>
+          <div class="summary-row total-row">
+            <span>Total a Pagar</span>
+            <strong class="total-price" id="cartTotal">$0 COP</strong>
+          </div>
+        </div>
+
+        <button type="button" class="btn-checkout" id="btnProceedCheckout" disabled>
+          <span>Continuar con la Compra</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+        <button type="button" class="btn-clear-cart" id="btnClearCart">
+          <i class="fa-solid fa-trash-can"></i> Vaciar Carrito
+        </button>
+      </div>
+
+    </aside>
+  </div>
+
+  <!-- =====================================================
+       MODAL DE CHECKOUT / FINALIZAR COMPRA
+  ====================================================== -->
+  <div class="modal-overlay" id="modalCheckout">
+    <div class="modal-card modal-checkout-card">
+      <button type="button" class="btn-close-modal" id="btnCloseCheckout">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="modal-icon-badge">
+        <i class="fa-solid fa-credit-card"></i>
+      </div>
+
+      <h2>Finalizar Pedido</h2>
+      <p class="modal-desc">Confirma tu dirección de entrega y método de pago.</p>
+
+      <form id="formCheckout" novalidate>
+        <div class="checkout-grid">
+          
+          <div class="form-group full-width">
+            <label for="checkoutNombre">NOMBRE COMPLETO</label>
+            <div class="input-container">
+              <i class="fa-solid fa-user field-icon"></i>
+              <input type="text" id="checkoutNombre" required readonly>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="checkoutTelefono">TELÉFONO DE CONTACTO <span class="required">*</span></label>
+            <div class="input-container">
+              <i class="fa-solid fa-phone field-icon"></i>
+              <input type="tel" id="checkoutTelefono" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="checkoutMetodoPago">MÉTODO DE PAGO <span class="required">*</span></label>
+            <div class="input-container select-container">
+              <i class="fa-solid fa-wallet field-icon"></i>
+              <select id="checkoutMetodoPago" required>
+                <option value="Contra Entrega">💵 Pago Contra Entrega (Efectivo)</option>
+                <option value="Transferencia Nequi/Daviplata">📱 Nequi / Daviplata</option>
+                <option value="Tarjeta de Crédito/Débito">💳 Tarjeta de Crédito / Débito</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="checkoutDireccion">DIRECCIÓN DE ENTREGA <span class="required">*</span></label>
+            <div class="input-container">
+              <i class="fa-solid fa-map-location-dot field-icon"></i>
+              <input type="text" id="checkoutDireccion" placeholder="Ej: Calle 45 # 12-34, Apto 302" required>
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="checkoutNotas">NOTAS / INSTRUCCIONES PARA EL CHEF (OPCIONAL)</label>
+            <div class="input-container">
+              <i class="fa-solid fa-comment-dots field-icon"></i>
+              <input type="text" id="checkoutNotas" placeholder="Ej: Sin cebolla, salsa aparte, timbre dañado...">
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Resumen dentro del checkout -->
+        <div class="checkout-summary-box">
+          <div class="summary-line">
+            <span>Total del Pedido (con envío):</span>
+            <strong class="total-highlight" id="checkoutTotalAmount">$0 COP</strong>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit-order" id="btnConfirmOrder">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Confirmar y Realizar Pedido</span>
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- =====================================================
+       MODAL DE ÉXITO DE COMPRA
+  ====================================================== -->
+  <div class="modal-overlay" id="modalOrderSuccess">
+    <div class="modal-card">
+      <div class="modal-icon-badge success-badge">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <h2>¡Pedido Realizado con Éxito!</h2>
+      <p class="modal-desc">Hemos recibido tu orden y nuestros chefs ya están preparando tus platillos.</p>
+      
+      <div class="order-receipt-box" id="orderReceipt">
+        <!-- Llenado dinámicamente -->
+      </div>
+
+      <button type="button" class="btn-modal-close" id="btnAcceptSuccess">Seguir Explorando el Menú</button>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script src="./js/menu.js"></script>
+
+</body>
+</html>
